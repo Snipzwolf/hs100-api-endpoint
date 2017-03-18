@@ -23,9 +23,10 @@ function handleConnection(conn) {
 
   function onConnData(d) {
     console.log('connection data from %s: %j', remoteAddress, d);
-    const plug = client.getPlug({host: '192.168.86.16'});
-    plug.setPowerState((d.trim().toLowerCase() === 'true'));
-    conn.write(d.toUpperCase());
+    const plug = client.getPlug({host: process.env.PLUG_IP});
+    const res = plug.setPowerState((d.trim().toLowerCase() === 'true'));
+    console.log(res);
+    conn.write("done");
   }
 
   function onConnClose() {
