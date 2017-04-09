@@ -25,7 +25,7 @@ function handleConnection(conn) {
     console.log('connection data from %s: %j', remoteAddress, d);
     const plug = client.getPlug({host: process.env.PLUG_IP});
     const res = plug.setPowerState((d.trim().toLowerCase() === 'true'));
-    console.log(res);
+    //console.log(res);
     conn.write("done");
   }
 
